@@ -3,11 +3,7 @@ import Form from './Form'
 import { connect } from 'react-redux'
 import {withRouter} from 'react-router-dom'
 class FormContainer extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
+  
   render() {
 var texto =' sfdsfdsfsdf';
 
