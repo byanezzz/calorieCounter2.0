@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux'
 import Search from './Search';
+import ListBranded from './ListBranded'
 import {withRouter} from 'react-router-dom'
 class Form extends Component { 
 
@@ -38,6 +39,7 @@ class Form extends Component {
           <label htmlFor="genero">Femenino</label> 
           <input type="radio" name="genero" id="genero"/> 
           <Search/>
+          <ListBranded store={this.props.store}/>
           <input className={
                   classnames({
                     edit: this.props.editing,

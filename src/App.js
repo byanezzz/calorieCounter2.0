@@ -6,6 +6,9 @@ import Form from './components/Form'
 import FormContainer from './components/FormContainer'
 import Formulario from './containers/FormUser'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import { connect } from 'react-redux'
+import {withRouter} from 'react-router-dom'
 class App extends Component {
 
   constructor(props) {
@@ -25,11 +28,16 @@ class App extends Component {
               <p className="App-intro">
                 To get started, edit <code>src/App.js</code> and save to reload.
               </p>
-              <Route  exact path="/q" component={FormContainer}/>
+              <Route   exact path="/q"  render={()=><FormContainer store={this.props.store}/>}/>
             </div>
       </Router>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    ownProps: ownProps
+  }
+}
+export default connect(mapStateToProps)(App);

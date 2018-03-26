@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import {withRouter} from 'react-router-dom'
+import * as types from '../actions/actionTypes';
+import {search} from '../actions/index'
 
 class Search extends Component {
 
@@ -34,7 +36,7 @@ class Search extends Component {
 
         response.json().then(data => {
           const results = data.branded;
-          this.setState({ results });
+          this.props.dispatch(search(results))
         });
       })
       .catch(err => {

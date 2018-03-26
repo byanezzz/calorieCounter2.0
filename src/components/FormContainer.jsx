@@ -22,4 +22,10 @@ const mapState = (state) => ({
   state: state
 })
 
-export default withRouter(connect(mapState)(FormContainer));
+const mapStateToProps = (state, ownProps) => {
+  return {
+    ownProps: ownProps
+  }
+}
+
+export default withRouter(connect(mapState,mapStateToProps)(FormContainer));
