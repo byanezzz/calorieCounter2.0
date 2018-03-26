@@ -11,3 +11,10 @@ export function decrement() {
         type: types.DECREMENT
     };
 }
+
+export function search(result) {
+    return {
+        type: types.SEARCH,
+        result
+    };
+}
