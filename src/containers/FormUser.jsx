@@ -1,11 +1,20 @@
-import React, { Component } from 'react';
 
-export default class FormUser extends Component {
-  render() {
-    return (
-      <div className="formuser">
-        { this.props.children }
-      </div>
+import React from 'react'
+import Form from '../components/Form'
+import { connect } from 'react-redux'
+
+const Formulario = ({dispatch, state }) => {
+
+
+  return (
+    <div>
+      <input value='valor a mostrar' />
+      
+    </div>
     )
-  }
 }
+
+const mapState = (state) => ({
+  state: state
+})
+export default connect(mapState)(Formulario)

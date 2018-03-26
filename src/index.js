@@ -6,9 +6,15 @@ import registerServiceWorker from './registerServiceWorker';
 import rootReducer from './reducers';
 import configStore from './store/configStore';
 import { Provider } from 'react-redux'
-const store = configStore;
+import {persistStore} from 'redux-persist'
 
-ReactDOM.render(<Provider store={store}>
-    <App />
+
+const store = configStore();
+
+
+//const persistor =  persistStore(store);
+
+ReactDOM.render(<Provider store={store} >
+    <App store={store}/>
   </Provider>, document.getElementById('root'));
 registerServiceWorker();

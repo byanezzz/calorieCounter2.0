@@ -1,6 +1,33 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
+import { connect } from 'react-redux'
+import Search from './Search';
+import {withRouter} from 'react-router-dom'
+class Form extends Component { 
 
-export default class Form extends Component { 
+  constructor(props) {
+    super(props);
+    this.state = { secondsqwqw: 0 , text: this.props.text};
+    console.log(this.props);
+    this.handleNewChange.bind(this);
+  }
+
+  state = {
+    text: this.props.text || 'erer'
+  }
+
+  handleChange = e => {
+    this.setState({ text: e.target.value })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+
+    console.log('componentDidUpdate');
+  }
+
+ handleNewChange(e){
+  this.setState({ text: e.target.value })
+ } 
   render() { 
     return ( 
       
@@ -10,6 +37,16 @@ export default class Form extends Component {
           <input type="radio" name="genero" id="genero"/> 
           <label htmlFor="genero">Femenino</label> 
           <input type="radio" name="genero" id="genero"/> 
+          <Search/>
+          <input className={
+                  classnames({
+                    edit: this.props.editing,
+                    'new-todo': this.props.newTodo
+                  })}
+                  type="text"
+                  placeholder={this.props.placeholder}
+                  value={this.state.text}
+                  onChange={this.handleChange} />
         </div> 
         <div> 
           <label htmlFor="edad">Edad</label> 
@@ -49,3 +86,8 @@ export default class Form extends Component {
     ) 
   } 
 } 
+const mapState = (state) => ({
+  state: state
+})
+
+export default withRouter(connect(mapState)(Form));
