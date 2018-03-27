@@ -1,5 +1,4 @@
-import createLogger from 'redux-logger';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, compose } from 'redux';
 import reducers from '../reducers';
 
 export default function configStore(initialState) {

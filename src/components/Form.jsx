@@ -10,14 +10,24 @@ class Form extends Component {
     super(props);
     this.state = { secondsqwqw: 0 , text: this.props.text};
     console.log(this.props);
-    this.handleNewChange.bind(this);
-  }
+    // this.handleNewChange.bind(this);
+    this.state = {
+      edad: '',
+      peso: '',
+      altura: '',
+    };
 
-  state = {
-    text: this.props.text || 'erer'
   }
+  handleChange = (e) => { 
+    const state = this.state
+    state[e.target.name] = e.target.value;
+    this.setState(state);
+  }  
+  // state = {
+  //   text: this.props.text || 'erer'
+  // }
 
-  handleChange = e => {
+ /*  handleChange = e => {
     this.setState({ text: e.target.value })
   }
 
@@ -27,20 +37,19 @@ class Form extends Component {
   }
 
  handleNewChange(e){
-  this.setState({ text: e.target.value })
- } 
+  this.setState({ value: e.target.value })
+ } */ 
   render() { 
-    return ( 
-      
+    const { edad, peso, altura } = this.state;
+    return (       
       <form> 
-        <div> 
-          <label htmlFor="genero">Masculino</label> 
-          <input type="radio" name="genero" id="genero"/> 
-          <label htmlFor="genero">Femenino</label> 
-          <input type="radio" name="genero" id="genero"/> 
-          <Search/>
+        <Search/>
           <ListBranded store={this.props.store}/>
-          <input className={
+        <div> 
+          <label htmlFor="masculino">Masculino<input type="radio" name="genero" id="masculino"/>  </label> 
+          <label htmlFor="femenino">Femenino <input type="radio" name="genero" id="femenino"/>  </label> 
+                   
+          {/*<input className={
                   classnames({
                     edit: this.props.editing,
                     'new-todo': this.props.newTodo
@@ -48,15 +57,15 @@ class Form extends Component {
                   type="text"
                   placeholder={this.props.placeholder}
                   value={this.state.text}
-                  onChange={this.handleChange} />
+                  onChange={this.handleChange} />*/}
         </div> 
         <div> 
           <label htmlFor="edad">Edad</label> 
-          <input type="text" name="edad" id="edad"/> 
+          <input type="text" name="edad" id="edad" value={edad} onChange={this.handleChange}/> 
           <label htmlFor="peso">Peso, kg</label> 
-          <input type="text" name="peso" id="peso"/> 
+          <input type="text" name="peso" id="peso" value={peso} onChange={this.handleChange}/> 
           <label htmlFor="altura">Altura, cm</label> 
-          <input type="text" name="altura" id="altura"/> 
+          <input type="text" name="altura" id="altura" value={altura} onChange={this.handleChange}/> 
         </div> 
         <div> 
           <h5>Tipo de Actividad</h5> 
@@ -83,7 +92,7 @@ class Form extends Component {
         </div> 
         <div> 
           <input type="submit" value="Siguiente"/> 
-        </div> 
+        </div>         
       </form> 
     ) 
   } 
