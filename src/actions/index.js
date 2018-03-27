@@ -1,20 +1,26 @@
 import * as types from './actionTypes';
 
 export function increment() {
-    return {
-        type: types.INCREMENT
-    };
+  return {
+    type: types.INCREMENT
+  };
 }
 
 export function decrement() {
-    return {
-        type: types.DECREMENT
-    };
+  return {
+    type: types.DECREMENT
+  };
 }
 
 export function search(result) {
-    return {
-        type: types.SEARCH,
-        result
-    };
+  return {
+    type: types.SEARCH,
+    result
+  };
+}
+export function sendForm(state) {
+  return {
+    type: types.SEND_FORM,
+    state
+  };
 }

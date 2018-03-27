@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <Router store={this.props.store}>
         <div className="App">
-          <Route exact path="/q" render={() => <FormContainer store={this.props.store} />} />
+          <Route exact path="/" render={() => <FormContainer store={this.props.store} />} />
         </div>
       </Router>
     );

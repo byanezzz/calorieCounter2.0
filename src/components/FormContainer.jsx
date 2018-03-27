@@ -8,8 +8,7 @@ class FormContainer extends Component {
 var texto =' sfdsfdsfsdf';
 
     return (
-      <Form store={this.props.store} text={texto} placeholder=' nombre' editing='true'>
-        
+      <Form store={this.props.store} text={texto} placeholder=' nombre' editing='true'>        
       </Form>
     )
   }

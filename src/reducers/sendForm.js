@@ -1,15 +1,15 @@
 import * as types from '../actions/actionTypes';
 
 const initialState = {
-  cont: 0
+
 };
 
-const search = (state = initialState, action) => {
+const sendForm = (state = initialState, action) => {
   switch (action.type) {
-    case types.SEARCH:
+    case types.SEND_FORM:
       return {
         ...state,
-        result: action.result
+        state: action.state
       };
 
     default:
@@ -17,4 +17,4 @@ const search = (state = initialState, action) => {
   }
 }
 
-export default search;
+export default sendForm;

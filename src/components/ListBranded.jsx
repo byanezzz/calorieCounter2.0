@@ -23,7 +23,9 @@ import { connect } from 'react-redux'
    unsubscribe = this.props.store.subscribe(()=> {
     let previousValue = this.props.store.getState().search.result;
     console.log(previousValue);
+    if (previousValue !== undefined){
     this.setState({ listBranded: previousValue});
+  }
   })
 
 
