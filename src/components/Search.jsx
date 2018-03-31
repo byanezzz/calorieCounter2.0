@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { search } from '../actions/index'
+import { changePath } from '../actions/index'
 
 class Search extends Component {
   searchApi = (e) => {
@@ -17,7 +18,6 @@ class Search extends Component {
           console.log('Error: ' + response.status);
           return new Error();
         }
-
         response.json().then(data => {
           const results = data.branded;
           this.props.dispatch(search(results))
@@ -33,29 +33,26 @@ class Search extends Component {
     this.searchApi.bind(this);
   }
 
-
   handleChange = e => {
     this.setState({ text: e.target.value })
   }
-
 
   render() {
     return (
       <div className="search">
         <div className="form-inline">
           <div className="form-group">
-
             <label htmlFor="inputPassword2" className="sr-only">Buscar</label>
             <input type="text" className="form-control" id="inputPassword2" onChange={this.handleChange} placeholder="Buscar Alimento" />
-
-            
           </div>
           <button type="button" onClick={this.searchApi} className="btn btn-default">Buscar</button>
         </div>
       </div>
     )
   }
+  componentDidMount(){
+    this.props.dispatch(changePath({name:'Search'}))
+  }
 }
-
 
 export default withRouter(connect()(Search));
