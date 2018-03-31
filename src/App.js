@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
-import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom'
-import FormContainer from './components/FormContainer'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import FormContainer from './containers/FormContainer'
+import DailyCaloriesContainer from './containers/DailyCaloriesContainer'
+import AddFoodContainer from './containers/AddFoodContainer'
+import './App.css';
+
 
 class App extends Component {
 
@@ -11,15 +14,12 @@ class App extends Component {
       <Router store={this.props.store}>
         <div className="App">
           <Route exact path="/" render={() => <FormContainer store={this.props.store} />} />
+          <Route exact path="/calories" render={() => <DailyCaloriesContainer store={this.props.store} />} />
+          <Route exact path="/addFood" render={() => <AddFoodContainer store={this.props.store} />} />
         </div>
       </Router>
     );
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    ownProps: ownProps
-  }
-}
-export default connect(mapStateToProps)(App);
+export default connect()(App);

@@ -24,3 +24,27 @@ export function sendForm(state) {
     state
   };
 }
+export function changePath(state) {
+  return {
+    type: types.CHANGE_PATH,
+    state
+  };
+}
+export function addFood(state) {
+  return {
+    type: types.ADD_FOOD,
+    state
+  };
+}
+export function deleteFood(id) {
+  return {
+    type: types.DELETE_FOOD,
+    id
+  };
+}
+export function calculator(maxCalories) {
+  return {
+    type: types.CALCULATOR,
+    maxCalories
+  };
+}

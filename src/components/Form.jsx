@@ -1,21 +1,24 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux'
-import Search from './Search';
-import {sendForm} from '../actions'
-import ListBranded from './ListBranded'
 import {withRouter} from 'react-router-dom'
+
+import {sendForm} from '../actions'
+
+
 class Form extends Component { 
 
   constructor(props) {
     super(props);
-    this.state = { secondsqwqw: 0 , text: this.props.text};
-    console.log(this.props);
+    // this.state = { secondsqwqw: 0 , text: this.props.text};
+    // console.log(this.props);
     // this.handleNewChange.bind(this);
     this.state = {
+      genero:'',
       edad: '',
       peso: '',
       altura: '',
+      actividad:''
     };
 
   }
@@ -41,11 +44,9 @@ class Form extends Component {
   this.setState({ value: e.target.value })
  } */ 
   render() { 
-    const { edad, peso, altura } = this.state;
+    const { genero, edad, peso, altura, actividad } = this.state;
     return (       
-      <form> 
-        <Search/>
-          <ListBranded store={this.props.store}/>
+      <form>         
         <div> 
           <label htmlFor="masculino">Masculino<input type="radio" name="genero" id="masculino" data-value="masculino" onChange={this.handleChange}/>  </label> 
           <label htmlFor="femenino">Femenino <input type="radio" name="genero" id="femenino" data-value="femenino" onChange={this.handleChange}/>  </label> 
@@ -92,14 +93,15 @@ class Form extends Component {
           </div> 
         </div> 
         <div> 
-          <input type="button" value="Siguiente" onClick={()=>this.props.store.dispatch(sendForm(this.state))}/> 
+          <input type="button" value="Siguiente" onClick={()=>{
+            this.props.history.push("/calories");
+            this.props.store.dispatch(sendForm(this.state));    
+          }
+        }/> 
         </div>         
       </form> 
     ) 
   } 
 } 
-const mapState = (state) => ({
-  state: state
-})
 
-export default withRouter(connect(mapState)(Form));
+export default withRouter(connect()(Form));

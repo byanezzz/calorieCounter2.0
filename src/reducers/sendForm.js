@@ -9,7 +9,8 @@ const sendForm = (state = initialState, action) => {
     case types.SEND_FORM:
       return {
         ...state,
-        state: action.state
+        state: action.state,
+        calories: calculoCalorias(action.state.genero, action.state.edad, action.state.altura, action.state.actividad, action.state.peso)
       };
 
     default:
@@ -17,4 +18,10 @@ const sendForm = (state = initialState, action) => {
   }
 }
 
+function calculoCalorias(genero, edad, altura, actividad, peso) {
+  if (genero === "femenino")
+    return Math.round(((655 + (9.6 * peso)) + ((1.8 * altura) - (4.7 * edad)) * actividad));
+  else
+    return Math.round(((66 + (13.7 * peso)) + ((5 * altura) - (6.8 * edad)) * actividad));
+}
 export default sendForm;
