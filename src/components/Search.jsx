@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { search } from '../actions/index'
+import { changePath } from '../actions/index'
 
 class Search extends Component {
   searchApi = (e) => {
@@ -17,7 +18,6 @@ class Search extends Component {
           console.log('Error: ' + response.status);
           return new Error();
         }
-
         response.json().then(data => {
           const results = data.branded;
           this.props.dispatch(search(results))
@@ -50,7 +50,9 @@ class Search extends Component {
       </div>
     )
   }
+  componentDidMount(){
+    this.props.dispatch(changePath({name:'Search'}))
+  }
 }
-
 
 export default withRouter(connect()(Search));
