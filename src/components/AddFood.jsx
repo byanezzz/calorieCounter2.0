@@ -5,19 +5,25 @@ import {deleteFood} from '../actions'
 
 class AddFood extends Component {
   constructor(props) {
+    props={...props,previousValue:[]};
     super(props);
     this.state = {
       addFood: []
     }
   }
+  
   unsubscribe = this.props.store.subscribe(() => {
     let previousValue=[];
     if ( this.props.store.getState().addFood){
     previousValue = this.props.store.getState().addFood;
+
   } 
-    if (previousValue !== undefined) {
+    if (previousValue !== undefined && !previousValue.equals(this.props.previousValue)) {
+      this.props={...this.props,previousValue};
       this.setState({ addFood: previousValue });
-    }else {
+    }else if(previousValue !== undefined ) {
+     
+    }else{
       this.setState({ addFood: [] });
     }
   })

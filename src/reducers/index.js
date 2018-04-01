@@ -5,12 +5,14 @@ import sendForm from './sendForm';
 import changePath from './changePath';
 import addFood from './addFood';
 import calculator from './calculator';
+import authUser from './authUser';
 
 export default combineReducers({
-  counter,
-  search,
-  sendForm,
-  changePath,
-  addFood,
-  calculator
+    counter,
+    search,
+    sendForm,
+    changePath,
+    addFood,
+    calculator,
+    authUser
 });
