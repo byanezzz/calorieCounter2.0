@@ -6,3 +6,4 @@ export const CHANGE_PATH = 'CHANGE_PATH';
 export const ADD_FOOD = 'ADD_FOOD';
 export const CALCULATOR = 'CALCULATOR';
 export const DELETE_FOOD = 'DELETE_FOOD';
+export const AUTH_USER = 'AUTH_USER';
