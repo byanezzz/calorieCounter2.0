@@ -5,7 +5,9 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import configStore from './store/configStore';
 import { Provider } from 'react-redux'
+import configInitial from './util/util';
 
+configInitial();
 
 const store = configStore();
 
