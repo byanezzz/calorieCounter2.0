@@ -17,6 +17,9 @@ class DailyCalories extends Component {
     if (previousValue !== undefined) {
       this.setState({ dailyCalories: previousValue });
     }
+    if( this.props.store.getState().authUser.user === undefined){
+      this.props.history.push("/");
+    }
   })
   render() {
     return (
