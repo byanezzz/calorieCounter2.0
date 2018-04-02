@@ -29,6 +29,9 @@ import { addFood, calculator } from '../actions/index'
  */    if (previousValue !== undefined){
     this.setState({ listBranded: previousValue});
   }
+  if( this.props.store.getState().authUser.user === undefined){
+    this.props.history.push("/");
+  }
   })
 
   render() {

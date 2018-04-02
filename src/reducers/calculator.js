@@ -15,4 +15,8 @@ const calculator = (state = initialState, action) => {
       return state
   }
 }
+
+function displayCalories(maxCalories, ) {
+
+}
 export default calculator;

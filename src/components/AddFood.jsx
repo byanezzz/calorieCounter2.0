@@ -13,19 +13,18 @@ class AddFood extends Component {
   }
   
   unsubscribe = this.props.store.subscribe(() => {
-    let previousValue=[];
+    let currentValue=[];
     if ( this.props.store.getState().addFood){
-    previousValue = this.props.store.getState().addFood;
+      currentValue = this.props.store.getState().addFood;
 
   } 
-    if (previousValue !== undefined && !previousValue.equals(this.props.previousValue)) {
-      this.props={...this.props,previousValue};
-      this.setState({ addFood: previousValue });
-    }else if(previousValue !== undefined ) {
-     
-    }else{
+    if (currentValue !== undefined && !currentValue.equals(this.props.previousValue)) {
+      this.props={...this.props,previousValue:currentValue};
+      this.setState({ addFood: currentValue });
+    }else if(currentValue === undefined ) {
       this.setState({ addFood: [] });
     }
+    
   })
   handleClick=(el)=>{
     this.props.dispatch(deleteFood(el.foodCalories.id))
